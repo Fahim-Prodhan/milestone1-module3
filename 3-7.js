@@ -25,6 +25,8 @@ class LinkedList {
         }
         this.length++;
     }
+
+
     prepend(value){
         const newNode = new Node(value)
         // if the linkedList empty
@@ -35,8 +37,46 @@ class LinkedList {
             newNode.next = this.head;
             this.head = newNode;
         }
+        this.length++;
     }
-    insert(){}
+
+
+    insert(index, value){
+        if(index<0 || index > this.length){
+            return undefined;
+        }
+
+        if(index == 0){
+            this.prepend(value)
+        }
+
+        if(index == this.length){
+            this.append(value)
+        }
+
+        let count = 0;
+
+        let currentNode = this.head;
+        let leadingNode;
+        let holdingNode
+
+        while(count < index-1){
+            currentNode = currentNode.next;
+            count++
+        }
+
+        leadingNode = currentNode;
+        holdingNode = leadingNode.next;
+        
+        const newNode = new Node(value);
+        leadingNode.next = newNode;
+        newNode.next = holdingNode;
+        // this.tail =holdingNode;
+
+        this.length++;
+
+    }
+
     remove(){}
     print(){
         let temp = this.head;
@@ -54,7 +94,7 @@ linkedList.append(10)
 linkedList.append(20)
 linkedList.append(30)
 
-linkedList.prepend(3);
-linkedList.prepend(2);
-linkedList.prepend(1);
+linkedList.insert(2,99)
+linkedList.insert(2,22)
+
 linkedList.print();
