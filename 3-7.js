@@ -25,7 +25,17 @@ class LinkedList {
         }
         this.length++;
     }
-    prepend(){}
+    prepend(value){
+        const newNode = new Node(value)
+        // if the linkedList empty
+        if(this.head == null){
+            this.head = newNode;
+            this.tail = newNode;
+        }else{
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+    }
     insert(){}
     remove(){}
     print(){
@@ -44,4 +54,7 @@ linkedList.append(10)
 linkedList.append(20)
 linkedList.append(30)
 
+linkedList.prepend(3);
+linkedList.prepend(2);
+linkedList.prepend(1);
 linkedList.print();
