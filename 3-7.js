@@ -77,7 +77,27 @@ class LinkedList {
 
     }
 
-    remove(){}
+    remove(index){
+        if(index<0 || index > this.length){
+            return undefined;
+        }
+
+        let count = 0;
+
+        let currentNode = this.head;
+        let leadingNode;
+
+        while(count < index-1){
+            currentNode = currentNode.next;
+            count++
+        }
+
+        leadingNode = currentNode;
+        const nodeToRemove = leadingNode.next;
+        leadingNode.next = nodeToRemove.next;
+        this.length++
+
+    }
     print(){
         let temp = this.head;
 
@@ -97,4 +117,9 @@ linkedList.append(30)
 linkedList.insert(2,99)
 linkedList.insert(2,22)
 
+linkedList.print();
+console.log('------------');
+
+linkedList.remove(2)
+linkedList.remove(2)
 linkedList.print();
